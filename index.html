@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>夫にバレずに始める 離婚準備・優先順位診断</title>
+
+<!-- ============================================================
+     公式LINEのURLは下の LINE_URL を書き換えてください
+     例: const LINE_URL = "https://lin.ee/あなたのID";
+     ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    /* ---- ベースカラー（ミルクベージュの紙＋やわらかローズ＆アプリコット） ---- */
+    --bg:#FAF4EF;
+    --bg-soft:#F7F0EA;
+    --surface:#FFFFFF;
+    --surface-2:#FDF7F1;
+
+    --text:#403A36;
+    --text-soft:#7B736B;
+    --text-faint:#AC9F92;
+
+    --line:#EBDFD2;
+    --line-soft:#F3E9DD;
+
+    /* メインカラー：やわらかいローズベージュ */
+    --primary:#A87F70;
+    --primary-deep:#8C6657;
+    --primary-tint:#F4EAE4;
+    --primary-tint-2:#EAD9CF;
+
+    /* やさしいアプリコット／ローズ系アクセント（かわいげ担当） */
+    --accent:#E0A38C;
+    --accent-deep:#C98870;
+    --accent-tint:#FBE9DF;
+    --accent-tint-2:#F6DDCF;
+
+    /* CTA：押したくなるテラコッタ・コーラル（行動喚起担当） */
+    --action:#D27A54;
+    --action-deep:#BC6440;
+
+    --line-green:#06C755;
+    --line-green-d:#05b14b;
+
+    /* ---- 影は浅く、輪郭は線で ---- */
+    --shadow-sm:0 1px 2px rgba(46,49,54,.04), 0 6px 18px -12px rgba(46,49,54,.16);
+    --shadow:0 1px 3px rgba(46,49,54,.04), 0 14px 34px -20px rgba(46,49,54,.20);
+
+    --r:18px;
+    --r-sm:13px;
+    --maxw:540px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:"Zen Kaku Gothic New","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans CJK JP","Noto Sans JP",sans-serif;
+    color:var(--text);
+    line-height:1.9;
+    letter-spacing:.012em;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+    background-color:var(--bg);
+  }
+  .mincho{font-family:"Zen Old Mincho","Noto Serif CJK JP","Hiragino Mincho ProN","Yu Mincho",serif;}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px;}
+
+  /* ---------- 背景レイヤー（紙地・にじみ・アーチ線・粒感） ---------- */
+  .bg-decor{
+    position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+    background:
+      /* くすみローズ（右上） */
+      radial-gradient(520px 420px at 96% -4%, rgba(201,134,138,.10), transparent 66%),
+      /* ピーチベージュ（左下） */
+      radial-gradient(580px 480px at 0% 104%, rgba(216,164,143,.08), transparent 70%),
+      /* ── ほんのり七色（パール偏光）：ごく淡く角に ── */
+      radial-gradient(460px 380px at 100% 8%, rgba(170,152,205,.045), transparent 68%),   /* ライラック */
+      radial-gradient(420px 360px at 6% 94%, rgba(150,196,182,.040), transparent 70%),    /* ミント */
+      radial-gradient(520px 420px at 88% 100%, rgba(150,178,210,.038), transparent 70%),  /* スカイ */
+      radial-gradient(420px 360px at 2% 4%, rgba(224,182,150,.045), transparent 70%),     /* 金 */
+      /* ごく淡い中央の温もり（奥行き用） */
+      radial-gradient(760px 560px at 50% 26%, rgba(216,164,143,.05), transparent 72%),
+      /* 紙地（上ほんのり明るく） */
+      linear-gradient(180deg, #FCF7F1 0%, var(--bg) 46%, var(--bg-soft) 100%);
+  }
+  /* 端をほんのり締める紙のフレーム感（中央は完全透明＝可読性優先） */
+  .bg-decor::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(130% 115% at 50% 42%, transparent 62%, rgba(120,82,70,.05) 100%);
+  }
+  /* うっすら紙の粒感（細目＋粗目の2層／無機質なベタ塗り回避） */
+  .bg-decor::after{
+    content:"";position:absolute;inset:0;opacity:.05;mix-blend-mode:multiply;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.32' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+    background-size:160px 160px, 300px 300px;
+  }
+  .bg-arch{position:absolute;top:-84px;right:-104px;width:360px;height:360px}
+  .bg-arch-2{position:absolute;bottom:-128px;left:-118px;width:400px;height:400px}
+
+  ::selection{background:var(--primary-tint-2)}
+  :focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:8px}
+
+  /* ---------- 画面切替 ---------- */
+  .screen{display:none;position:relative;z-index:1}
+  .screen.active{display:block}
+  .screen.active .anim{animation:rise .5s ease both}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+
+  /* ---------- ヒーロー ---------- */
+  .hero{position:relative;padding:64px 0 40px}
+
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:12px;letter-spacing:.13em;color:var(--primary-deep);font-weight:700;margin-bottom:22px;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--accent)}
+  .hero h1{
+    font-family:"Zen Old Mincho","Noto Serif CJK JP",serif;
+    font-weight:600;font-size:clamp(23px, 6.4vw, 30px);line-height:1.72;
+    margin-bottom:22px;letter-spacing:.01em;color:var(--text);
+  }
+  .hero h1 .accent{
+    background:linear-gradient(transparent 66%, var(--accent-tint-2) 66%);
+    padding:0 .04em;
+  }
+  .hero .lead{color:var(--text-soft);font-size:clamp(13.5px, 3.7vw, 14.5px);margin-bottom:34px;line-height:1.95}
+
+  .start-card{
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--r);padding:30px 24px;box-shadow:var(--shadow-sm);
+  }
+  .start-card .kicker{font-size:12px;color:var(--primary-deep);font-weight:700;letter-spacing:.06em;margin-bottom:9px}
+  .start-card .name{font-family:"Zen Old Mincho","Noto Serif CJK JP",serif;font-size:23px;font-weight:600;line-height:1.55;letter-spacing:.02em;color:var(--text)}
+  .start-card .sub{font-size:13.5px;color:var(--text-soft);margin:9px 0 22px;line-height:1.85}
+
+  .meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+  .chip{
+    display:inline-flex;align-items:center;gap:5px;
+    font-size:11.5px;color:var(--primary-deep);background:var(--primary-tint);
+    border:1px solid var(--primary-tint-2);border-radius:999px;padding:6px 12px;font-weight:600;letter-spacing:.02em;
+  }
+  .chip svg{width:12px;height:12px;opacity:.85}
+
+  .btn{
+    display:flex;align-items:center;justify-content:center;gap:9px;
+    width:100%;border:none;cursor:pointer;font-family:inherit;font-weight:700;
+    font-size:16px;border-radius:13px;padding:17px;letter-spacing:.03em;
+    transition:background .2s ease, transform .12s ease, border-color .2s ease;
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn .arr{transition:transform .2s ease}
+  .btn:hover .arr{transform:translateX(3px)}
+
+  .btn-primary{
+    color:#fff;background:var(--action);
+    box-shadow:0 10px 22px -10px rgba(188,100,64,.55), 0 2px 5px -2px rgba(188,100,64,.30);
+    transition:background .2s ease, transform .12s ease, box-shadow .25s ease;
+  }
+  .btn-primary:hover{background:var(--action-deep);transform:translateY(-1px);box-shadow:0 14px 26px -10px rgba(188,100,64,.6), 0 3px 6px -2px rgba(188,100,64,.32)}
+  .btn-primary:active{transform:translateY(0)}
+
+  .btn-ghost{background:transparent;color:var(--text-soft);border:1px solid var(--line);font-weight:600;font-size:14px;padding:13px}
+  .btn-ghost:hover{background:var(--surface-2);border-color:var(--primary)}
+
+  .reassure{
+    background:var(--surface-2);border:1px solid var(--line-soft);border-radius:var(--r-sm);
+    padding:15px 17px;margin-top:20px;font-size:12.5px;color:var(--text-soft);line-height:1.9;
+    display:flex;gap:12px;
+  }
+  .reassure svg{width:18px;height:18px;flex:none;margin-top:2px;color:var(--primary)}
+  .reassure b{color:var(--text);font-weight:700}
+
+  /* ---------- 診断 ---------- */
+  .quiz-head{padding:34px 0 4px}
+  .progress-top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px}
+  .q-count{font-size:13px;color:var(--text-soft);font-weight:600;letter-spacing:.04em}
+  .q-count b{color:var(--primary-deep);font-size:15px;font-weight:700}
+  .q-pct{font-size:12px;color:var(--text-faint);font-weight:600}
+  .progress{position:relative;height:3px;background:var(--line);border-radius:99px;overflow:hidden}
+  .progress > i{
+    position:absolute;inset:0 auto 0 0;height:100%;width:0;border-radius:99px;
+    background:var(--primary);
+    transition:width .5s cubic-bezier(.3,.7,.2,1);
+  }
+  .encourage{font-size:12px;color:var(--primary-deep);font-weight:600;margin-top:12px;min-height:16px;letter-spacing:.02em}
+
+  .qcard{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+    padding:32px 24px;margin-top:20px;box-shadow:var(--shadow-sm);
+  }
+  .qcard.swap{animation:fade .35s ease both}
+  .qcard .qno{
+    display:inline-flex;align-items:center;
+    font-family:"Zen Old Mincho","Noto Serif CJK JP",serif;font-size:12.5px;font-weight:600;
+    color:var(--primary-deep);letter-spacing:.1em;margin-bottom:14px;
+  }
+  .qcard .qno::after{content:"";display:inline-block;width:26px;height:1px;background:var(--line);margin-left:12px}
+  .qcard .qtext{font-family:"Zen Old Mincho","Noto Serif CJK JP",serif;font-size:clamp(17.5px, 4.9vw, 20px);font-weight:500;line-height:1.85;margin-bottom:26px;color:var(--text)}
+  .opts{display:flex;flex-direction:column;gap:10px}
+  .opt{
+    position:relative;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);
+    padding:15px 18px;font-family:inherit;font-size:15.5px;font-weight:500;color:var(--text);
+    cursor:pointer;display:flex;align-items:center;gap:14px;width:100%;min-height:54px;
+    transition:border-color .15s, background .15s, box-shadow .15s;
+  }
+  .opt:hover{border-color:var(--primary);background:var(--surface-2)}
+  .opt .dot{position:relative;width:18px;height:18px;border-radius:50%;border:1.5px solid #C8CCC6;flex:none;transition:.18s}
+  .opt .dot::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--primary);transform:scale(0);transition:transform .18s}
+  .opt:hover .dot{border-color:var(--primary)}
+  .opt.picked{border-color:var(--primary);background:var(--primary-tint);box-shadow:inset 2px 0 0 var(--primary)}
+  .opt.picked .dot{border-color:var(--primary)}
+  .opt.picked .dot::after{transform:scale(1)}
+
+  .qnav{margin-top:18px;display:flex;justify-content:center}
+  .back{display:inline-flex;align-items:center;gap:6px;background:none;border:none;color:var(--text-soft);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;padding:8px 14px}
+  .back:hover{color:var(--primary-deep)}
+
+  /* ---------- 知りたいこと ---------- */
+  .panel{padding:52px 0 32px}
+  .panel h2{font-family:"Zen Old Mincho","Noto Serif CJK JP",serif;font-size:clamp(20px, 5.6vw, 23px);font-weight:600;line-height:1.68;margin-bottom:12px;color:var(--text)}
+  .panel .desc{font-size:13.5px;color:var(--text-soft);margin-bottom:26px;line-height:1.9}
+  .multi{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+  .mopt{
+    display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--r-sm);padding:15px 18px;font-size:15px;font-weight:500;cursor:pointer;
+    min-height:54px;transition:.16s;
+  }
+  .mopt:hover{border-color:var(--primary);background:var(--surface-2)}
+  .mopt .box{width:20px;height:20px;border-radius:6px;border:1.5px solid #C8CCC6;flex:none;display:flex;align-items:center;justify-content:center;transition:.16s}
+  .mopt .box svg{width:12px;height:12px;opacity:0;transform:scale(.4);transition:.16s;stroke:#fff}
+  .mopt.on{border-color:var(--primary);background:var(--primary-tint)}
+  .mopt.on .box{background:var(--primary);border-color:var(--primary)}
+  .mopt.on .box svg{opacity:1;transform:none}
+
+  /* ---------- 結果 ---------- */
+  .result{position:relative;padding:54px 0 36px}
+  .result-eyebrow{text-align:center;font-size:12px;letter-spacing:.16em;color:var(--primary-deep);font-weight:700;margin-bottom:18px}
+
+  .type-card{
+    position:relative;background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--r);padding:34px 26px;box-shadow:var(--shadow-sm);
+  }
+  .type-tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.04em;color:var(--accent-deep);background:var(--accent-tint);border:1px solid var(--accent-tint-2);padding:7px 14px;border-radius:999px;margin:0 0 20px}
+  .type-card h2{font-family:"Zen Old Mincho","Noto Serif CJK JP",serif;font-size:clamp(20px, 5.7vw, 24px);font-weight:600;line-height:1.66;margin-bottom:20px;letter-spacing:.01em;color:var(--text)}
+  .type-card .body{font-size:14.5px;color:var(--text-soft);line-height:2.05;margin-bottom:28px}
+
+  .block{border-top:1px solid var(--line-soft);padding-top:24px;margin-top:10px}
+  .block .label{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.05em;color:var(--primary-deep);margin-bottom:13px}
+  .block .label svg{width:15px;height:15px;color:var(--accent)}
+  .step1{font-family:"Zen Old Mincho","Noto Serif CJK JP",serif;font-size:16px;font-weight:500;line-height:1.85;background:var(--surface-2);border:1px solid var(--line-soft);border-left:2px solid var(--primary);border-radius:var(--r-sm);padding:17px 19px;color:var(--text)}
+  .gives{list-style:none;display:flex;flex-direction:column;gap:11px}
+  .gives li{display:flex;gap:11px;font-size:14px;color:var(--text-soft);line-height:1.7;align-items:flex-start}
+  .gives li svg{width:15px;height:15px;color:var(--primary);flex:none;margin-top:4px}
+
+  /* ---------- LINE CTA ---------- */
+  .line-cta{position:relative;margin-top:24px;background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r);padding:32px 26px;text-align:center}
+  .line-cta h3{font-family:"Zen Old Mincho","Noto Serif CJK JP",serif;font-size:20px;font-weight:600;line-height:1.68;margin-bottom:12px;color:var(--text)}
+  .line-cta p{font-size:13.5px;color:var(--text-soft);line-height:1.95;margin-bottom:22px}
+  .line-cta .want{font-size:13px;color:var(--primary-deep);background:var(--primary-tint);border:1px solid var(--primary-tint-2);border-radius:var(--r-sm);padding:14px 16px;margin-bottom:20px;line-height:1.8;text-align:left}
+  .line-cta .want b{color:var(--primary-deep);font-weight:700}
+  .btn-line{color:#fff;background:var(--line-green);text-decoration:none}
+  .btn-line:hover{background:var(--line-green-d)}
+  .btn-line svg{width:22px;height:22px;flex:none}
+  .line-note{font-size:11.5px;color:var(--text-faint);margin-top:16px;line-height:1.85}
+  /* 文節（フレーズ）単位で折り返す＝語の途中で切れない */
+  .ph{display:inline-block}
+  @media (min-width:400px){.ph{white-space:nowrap}}
+
+  .retry{margin-top:24px;display:flex;justify-content:center}
+
+  /* ---------- 安全フッター ---------- */
+  .safety{margin:18px auto 0;max-width:var(--maxw);padding:0 22px 52px}
+  .safety .inner{background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--r-sm);padding:17px 19px;font-size:12.5px;color:var(--text-soft);line-height:1.95;display:flex;gap:12px}
+  .safety .inner svg{width:19px;height:19px;flex:none;margin-top:2px;color:var(--accent)}
+  .safety b{color:var(--text)}
+  footer{text-align:center;font-size:11px;color:var(--text-faint);letter-spacing:.06em;line-height:2.0;padding:0 0 40px}
+  footer .credit{display:inline-block;margin-top:4px;font-family:"Zen Old Mincho","Noto Serif CJK JP",serif;font-size:12.5px;color:var(--primary-deep);letter-spacing:.12em}
+
+  @media (prefers-reduced-motion: reduce){*{animation:none !important;transition-duration:.01ms !important}}
+  @media (max-width:380px){
+    .hero{padding-top:52px}
+    .wrap{padding:0 22px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ 背景レイヤー（紙地・にじみ・アーチ線） ============ -->
+<div class="bg-decor" aria-hidden="true">
+  <svg class="bg-arch" viewBox="0 0 340 340" fill="none" stroke-width="1" stroke-linecap="round">
+    <defs>
+      <linearGradient id="archR" x1="340" y1="0" x2="120" y2="340" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="rgba(169,99,104,0)"/>
+        <stop offset=".45" stop-color="rgba(169,99,104,.09)"/>
+        <stop offset="1" stop-color="rgba(169,99,104,0)"/>
+      </linearGradient>
+    </defs>
+    <g stroke="url(#archR)">
+      <path d="M340 140 A200 200 0 0 0 140 340"/>
+      <path d="M340 92 A248 248 0 0 0 92 340"/>
+      <path d="M340 196 A144 144 0 0 0 196 340"/>
+    </g>
+  </svg>
+  <svg class="bg-arch-2" viewBox="0 0 380 380" fill="none" stroke-width="1" stroke-linecap="round">
+    <defs>
+      <linearGradient id="archL" x1="0" y1="380" x2="290" y2="0" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="rgba(169,99,104,0)"/>
+        <stop offset=".5" stop-color="rgba(169,99,104,.07)"/>
+        <stop offset="1" stop-color="rgba(169,99,104,0)"/>
+      </linearGradient>
+    </defs>
+    <g stroke="url(#archL)">
+      <path d="M0 230 A150 150 0 0 1 230 0"/>
+      <path d="M0 290 A210 210 0 0 1 290 0"/>
+    </g>
+  </svg>
+</div>
+
+<!-- ============ イントロ ============ -->
+<section class="screen active" id="screen-intro">
+  <div class="wrap hero">
+    <p class="eyebrow anim">離婚を急がせるための診断ではありません</p>
+    <h1 class="anim">全部を一気に考えるから、<br>動けなくなる。<br><span class="accent">まずは、最初のひとつだけ。</span></h1>
+    <p class="lead anim">証拠・お金・住まい・調停・心。検索すればするほど苦しくなるのは、あなたが弱いからではありません。順番が、わからないだけです。</p>
+
+    <div class="start-card anim">
+      <div class="kicker">夫にバレずに始める</div>
+      <div class="name mincho">離婚準備・優先順位診断</div>
+      <div class="sub">今のあなたが、最初に整えるべきことがわかる5分診断。</div>
+      <div class="meta">
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>約5分</span>
+        <span class="chip">全12問</span>
+        <span class="chip">無料</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>登録なしでOK</span>
+      </div>
+      <button class="btn btn-primary" onclick="startQuiz()">診断をはじめる<span class="arr">→</span></button>
+      <div class="reassure">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <span><b>名前も連絡先も入力せず</b>に受けられます。結果はこの画面に表示されるだけ。誰にも知られず、自分のペースで今の状態を静かに整理するための場所です。</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 診断 ============ -->
+<section class="screen" id="screen-quiz">
+  <div class="wrap">
+    <div class="quiz-head">
+      <div class="progress-top">
+        <span class="q-count"><b id="qnow">1</b> <span style="color:var(--text-faint);font-weight:600">/ 12</span></span>
+        <span class="q-pct" id="qpct">8%</span>
+      </div>
+      <div class="progress"><i id="bar"></i></div>
+      <div class="encourage" id="encourage">あなたのペースで大丈夫です</div>
+    </div>
+
+    <div class="qcard" id="qcard">
+      <div class="qno mincho" id="qno">Q1</div>
+      <p class="qtext" id="qtext"></p>
+      <div class="opts">
+        <button class="opt" data-val="1" onclick="answer(this)"><span class="dot"></span>あてはまる</button>
+        <button class="opt" data-val="0.5" onclick="answer(this)"><span class="dot"></span>どちらともいえない</button>
+        <button class="opt" data-val="0" onclick="answer(this)"><span class="dot"></span>あてはまらない</button>
+      </div>
+    </div>
+    <div class="qnav">
+      <button class="back" id="backBtn" onclick="prevQ()" style="visibility:hidden">← ひとつ前に戻る</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 知りたいこと ============ -->
+<section class="screen" id="screen-interest">
+  <div class="wrap panel">
+    <p class="eyebrow anim">あと少しで結果です</p>
+    <h2 class="mincho anim">今のあなたが、<br>いちばん知りたいことは？</h2>
+    <p class="desc anim">あてはまるものを選んでください（いくつでも）。結果のあと、その答えの受け取り方をご案内します。</p>
+    <div class="multi anim" id="multi"></div>
+    <button class="btn btn-primary anim" onclick="showResult()">結果を見る<span class="arr">→</span></button>
+    <div class="qnav"><button class="back" onclick="showScreen('screen-quiz')">← 診断に戻る</button></div>
+  </div>
+</section>
+
+<!-- ============ 結果 ============ -->
+<section class="screen" id="screen-result">
+  <div class="result">
+    <div class="wrap">
+      <p class="result-eyebrow anim">あなたの診断結果</p>
+
+      <div class="type-card anim">
+        <span class="type-tag" id="r-tag"></span>
+        <h2 class="mincho" id="r-title"></h2>
+        <p class="body" id="r-body"></p>
+
+        <div class="block">
+          <div class="label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c0-6 0-9 3-12"/><path d="M12 13C9 9 5 9 4 8c0 4 2 7 8 7"/><path d="M14 9c2-3 6-3 6-4 0 3-1 6-6 6"/></svg>今日の、小さな一歩</div>
+          <div class="step1 mincho" id="r-step"></div>
+        </div>
+
+        <div class="block">
+          <div class="label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>公式LINEで受け取れること</div>
+          <ul class="gives" id="r-gives"></ul>
+        </div>
+      </div>
+
+      <div class="line-cta anim">
+        <h3 class="mincho">「じゃあ、具体的にどう進めればいいの？」</h3>
+        <p><span class="ph">この診断でわかるのは、</span><span class="ph">最初の一歩まで。</span><br><span class="ph">ここから先の進め方は、</span><span class="ph">公式LINEで一つずつ</span><span class="ph">お渡ししています。</span></p>
+        <div class="want" id="r-want" style="display:none"></div>
+        <a class="btn btn-line" id="lineBtn" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 5.7 2 10.2c0 4 3.6 7.4 8.4 8 .3.1.8.2.9.5.1.3.1.6 0 .9l-.1.8c0 .2-.2.9.8.5s5.4-3.2 7.4-5.5C20.8 13.9 22 12.2 22 10.2 22 5.7 17.5 2 12 2z"/></svg>
+          公式LINEで進め方を受け取る
+        </a>
+        <p class="line-note"><span class="ph">怖いままでも大丈夫。</span><span class="ph">順番がわかれば、少しずつ動けます。</span><br><span class="ph">通知が来ても、</span><span class="ph">表示名でバレないように</span><span class="ph">ご案内します。</span></p>
+      </div>
+
+      <div class="retry"><button class="btn btn-ghost" onclick="resetAll()" style="width:auto;padding:13px 28px">もう一度、最初から診断する</button></div>
+    </div>
+
+    <div class="safety">
+      <div class="inner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/></svg>
+        <span><b>もし今、身の危険を感じているなら。</b>ためらわず110番してください。暴力・暴言・支配でつらいときは、内閣府「<b>DV相談プラス</b>」が24時間、電話・チャットで相談を受けています（無料・匿名OK）。一人で抱えなくて大丈夫です。</span>
+      </div>
+    </div>
+    <footer>夫にバレずに始める　離婚準備・優先順位診断<br><span class="credit">制作者：ふく</span></footer>
+  </div>
+</section>
+
+<script>
+  /* ====== ここを書き換えてください ====== */
+  const LINE_URL = "https://line.me/R/ti/p/@733nmopf";
+  /* ===================================== */
+
+  const questions = [
+    { t:"shoko",  q:"夫の暴言・無視・威圧的な態度に傷ついているのに、「私が我慢すればいい」と思って、記録に残してこなかった。" },
+    { t:"shoko",  q:"もし今、離婚を切り出して「証拠は？」と聞かれても、出せるものが何もない気がする。" },
+    { t:"okane",  q:"夫の本当の収入も、家にいくら貯金があるのかも、実はよくわかっていない。" },
+    { t:"okane",  q:"「離婚したら、子どもと生活していけないかもしれない」というお金の不安で、足がすくむ。" },
+    { t:"okane",  q:"自分（と子ども）の力で、もう一度生活を立て直せる――そんな自信が、まだ持てない。" },
+    { t:"sumai",  q:"「家を出たい」と思っても、出ていける場所のあてがない。" },
+    { t:"sumai",  q:"子どもの学校・保育園や生活環境を考えると、動くのが怖くて決められない。" },
+    { t:"chotei", q:"弁護士に相談したい気持ちはあるのに、費用や「何を話せばいいか」がわからず、ずっと後回しにしている。" },
+    { t:"chotei", q:"「調停」「裁判所」と聞くだけで、自分とは縁のない、怖い世界のように感じてしまう。" },
+    { t:"kokoro", q:"離婚のことを考えると涙が出たり、夜うまく眠れなかったりする。" },
+    { t:"kokoro", q:"最近、自分を責めてばかりで、何が正しいのか自分で判断できなくなっている。" },
+    { t:"kokoro", q:"何から始めればいいかわからないまま、もう何ヶ月も同じ場所で止まっている。" },
+  ];
+
+  const interests = [
+    "証拠・記録の残し方",
+    "離婚にかかるお金・もらえるお金",
+    "別居・住まいの準備",
+    "弁護士相談・調停の流れ",
+    "夫にバレない準備の進め方",
+    "つらい気持ちとの向き合い方",
+  ];
+
+  const results = {
+    shoko:{
+      tag:"A ｜ 証拠が、まだ味方になっていないタイプ",
+      title:"今のあなたに必要なのは、\n反論する力ではなく\n「静かに残す」習慣。",
+      body:"我慢して飲み込んできた言葉や態度。それは、あなたが弱いからではありません。ただ、いざというとき味方になるのは、その場の反論ではなく、日付とともに静かに残しておいた事実です。記録は、言葉にできない夜のあなたの代わりに、ちゃんと語ってくれます。",
+      step:"今日あったことを、スマホのメモに1行だけ残す。日付をつけて、それだけで十分です。",
+      gives:["調停で伝わりやすい記録の残し方","夫にバレにくいメモ・保存の工夫","何を証拠として残せばいいかの整理"]
+    },
+    okane:{
+      tag:"B ｜ お金の不安に、足を止められているタイプ",
+      title:"今やるべきは、\n離婚を決めることではなく\nお金を「見える化」すること。",
+      body:"「一人で生活していけるのかな」――その不安は、あなたが現実をちゃんと見ようとしている証拠です。漠然とした恐怖の正体は、たいてい「数字がわからないこと」。収入・貯金・使えるお金が見えてくると、不安は“こわいもの”から“対処できる課題”に変わります。",
+      step:"通帳・給与明細・保険証券が「どこにあるか」だけ確認する。中身はまだ見なくて大丈夫です。",
+      gives:["離婚前に確認すべきお金のリスト","養育費・財産分与・もらえるお金の基本","損をしないための準備の順番"]
+    },
+    sumai:{
+      tag:"C ｜ 出たあとの暮らしが、見えていないタイプ",
+      title:"必要なのは、勢いで出ることではなく\n「出たあと」を\n想像できる状態をつくること。",
+      body:"家を出たい。でも行く場所がない。子どものことを考えると動けない。その迷いは、あなたが家族を大切に思っているからこそです。今いるのは、選択肢を“知らないだけ”の地点。実家以外の道があると知るだけで、心は少し軽くなります。",
+      step:"実家以外の選択肢（公営住宅・母子支援・賃貸など）を、ひとつだけ検索してみる。",
+      gives:["別居の前に考える順番","使える公的支援・手当","感情だけで動いて後悔しないための準備"]
+    },
+    chotei:{
+      tag:"D ｜ 相談の一歩手前で、止まっているタイプ",
+      title:"相談は、\n準備した人ほど\n得をする場所です。",
+      body:"弁護士に相談したい。でも費用も、何を話せばいいかもわからなくて先延ばしにしてしまう。その不安は当然です。でも、限られた相談時間を何倍にも活かせるかは、当日までの準備で決まります。整理しておくだけで、こわかった場所が“味方を増やす場所”に変わります。",
+      step:"弁護士に聞きたいことを、3つだけ書き出してみる。それが相談の地図になります。",
+      gives:["相談前にまとめておく項目","調停・離婚の進み方の全体像","経験者目線での、無駄のない進め方"]
+    },
+    kokoro:{
+      tag:"E ｜ 心が、これ以上がんばれないと言っているタイプ",
+      title:"今のあなたに必要なのは、\n大きな決断ではありません。\nまず、自分を責めるのをやめること。",
+      body:"ここまで一人で抱えてきて、本当におつかれさまでした。判断力が落ちて感じるのは、あなたの能力のせいではなく、心が限界まで働いてきたからです。今日は大きく動かなくていい。順番がわかれば、心が限界でも、人は少しずつ動けます。",
+      step:"安全な場所で深呼吸して、この結果を保存する。今日はそれだけで、もう十分がんばっています。",
+      gives:["こわくて動けない状態から進む順番","自分を保つための言葉","無理のない、小さな準備のステップ"]
+    }
+  };
+
+  const tieOrder = ["kokoro","shoko","okane","sumai","chotei"];
+  const checkSVG = '<svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+  const giveSVG  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+  let cur = 0, answers = [], chosen = new Set(), locked = false;
+
+  function showScreen(id){
+    document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+
+  function startQuiz(){ cur=0; answers=[]; renderQ(false); showScreen("screen-quiz"); }
+
+  function encourageText(i,total){
+    if(i===0) return "あなたのペースで大丈夫です";
+    if(i>=total-2) return "あと少し。よくここまで来ました";
+    if(i>=Math.floor(total/2)) return "半分まで来ました。深呼吸して、続けましょう";
+    return "正直な気持ちで、ひとつずつ";
+  }
+
+  function renderQ(swap){
+    const item = questions[cur], total = questions.length;
+    document.getElementById("qno").textContent = "Q"+(cur+1);
+    document.getElementById("qtext").textContent = item.q;
+    document.getElementById("qnow").textContent = (cur+1);
+    const pct = Math.round((cur/total)*100);
+    document.getElementById("qpct").textContent = pct+"%";
+    document.getElementById("bar").style.width = pct+"%";
+    document.getElementById("encourage").textContent = encourageText(cur,total);
+    document.getElementById("backBtn").style.visibility = cur===0 ? "hidden":"visible";
+
+    document.querySelectorAll("#qcard .opt").forEach(o=>{
+      const v = parseFloat(o.dataset.val);
+      o.classList.toggle("picked", answers[cur]!==undefined && v===answers[cur]);
+    });
+    if(swap){
+      const c=document.getElementById("qcard");
+      c.classList.remove("swap"); void c.offsetWidth; c.classList.add("swap");
+    }
+  }
+
+  function answer(btn){
+    if(locked) return;
+    const v = parseFloat(btn.dataset.val);
+    answers[cur]=v;
+    document.querySelectorAll("#qcard .opt").forEach(o=>o.classList.remove("picked"));
+    btn.classList.add("picked");
+    locked=true;
+    setTimeout(()=>{
+      locked=false;
+      if(cur < questions.length-1){ cur++; renderQ(true); }
+      else { document.getElementById("bar").style.width="100%"; buildInterest(); showScreen("screen-interest"); }
+    }, 230);
+  }
+
+  function prevQ(){ if(cur>0){ cur--; renderQ(true); } }
+
+  function buildInterest(){
+    const box=document.getElementById("multi"); box.innerHTML=""; chosen.clear();
+    interests.forEach((label,i)=>{
+      const el=document.createElement("button"); el.className="mopt"; el.type="button";
+      el.innerHTML = `<span class="box">${checkSVG}</span><span>${label}</span>`;
+      el.onclick=()=>{ if(chosen.has(i)){chosen.delete(i);el.classList.remove("on");} else {chosen.add(i);el.classList.add("on");} };
+      box.appendChild(el);
+    });
+  }
+
+  function computeType(){
+    const sums={},counts={};
+    questions.forEach((it,i)=>{ sums[it.t]=(sums[it.t]||0)+(answers[i]||0); counts[it.t]=(counts[it.t]||0)+1; });
+    let best=null,bestScore=-1;
+    tieOrder.forEach(t=>{ const s=(sums[t]||0)/(counts[t]||1); if(s>bestScore){bestScore=s;best=t;} });
+    return best;
+  }
+
+  function showResult(){
+    const r=results[computeType()];
+    document.getElementById("r-tag").textContent=r.tag;
+    document.getElementById("r-title").textContent=r.title;
+    document.getElementById("r-body").textContent=r.body;
+    document.getElementById("r-step").textContent=r.step;
+    const ul=document.getElementById("r-gives"); ul.innerHTML="";
+    r.gives.forEach(g=>{ const li=document.createElement("li"); li.innerHTML=giveSVG+"<span>"+g+"</span>"; ul.appendChild(li); });
+
+    const want=document.getElementById("r-want");
+    if(chosen.size>0){
+      const labels=[...chosen].map(i=>interests[i]);
+      want.style.display="block";
+      want.innerHTML = `あなたが選んだ <b>「${labels.join("／")}」</b> も、公式LINEで順番にお届けします。`;
+    } else { want.style.display="none"; }
+
+    document.getElementById("lineBtn").href=LINE_URL;
+    showScreen("screen-result");
+  }
+
+  function resetAll(){
+    cur=0; answers=[]; chosen.clear();
+    document.getElementById("bar").style.width="0%";
+    showScreen("screen-intro");
+  }
+
+  renderQ(false);
+  document.getElementById("lineBtn").href=LINE_URL;
+</script>
+</body>
+</html>
